@@ -38,9 +38,11 @@ spec:
         dapr.io/config: "dapr-config"
         dapr.io/log-as-json: "true"
     spec:
+      imagePullSecrets:
+      - name: {{ .Values.imagepullsecret }}
       containers:
         - name: catalog-api
-          image: eshopdapr/catalog.api:latest
+          image: {{ .Values.registry }}/catalog.api:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

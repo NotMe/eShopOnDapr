@@ -1,5 +1,11 @@
 # K8s namespace to deploy eShopOnDapr in.
-namespace: eshopondapr
+namespace: eshop
 
 # Name of host where eShopOnDapr can be accessed.
 hostName: localhost
+
+# External docker image registry
+registry: localhost
+
+# Docker image registry secret
+imagepullsecret: ecr

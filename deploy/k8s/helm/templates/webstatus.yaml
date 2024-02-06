@@ -45,9 +45,11 @@ spec:
         app: eshop
         service: webstatus
     spec:
+      imagePullSecrets:
+      - name: {{ .Values.imagepullsecret }}
       containers:
         - name: webstatus
-          image: eshopdapr/webstatus:latest
+          image: {{ .Values.registry }}/webstatus:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: webstatus-http

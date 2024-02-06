@@ -40,9 +40,11 @@ spec:
         dapr.io/app-port: "80"
         dapr.io/config: "dapr-config"
     spec:
+      imagePullSecrets:
+      - name: {{ .Values.imagepullsecret }}
       containers:
       - name: apigateway
-        image: eshopdapr/webshoppingapigw:latest
+        image: {{ .Values.registry }}/webshoppingapigw:latest
         imagePullPolicy: IfNotPresent
         ports:
           - name: http

@@ -40,9 +40,11 @@ spec:
         dapr.io/config: "dapr-config"
         dapr.io/log-as-json: "true"
     spec:
+      imagePullSecrets:
+      - name: {{ .Values.imagepullsecret }}
       containers:
         - name: ordering-api
-          image: eshopdapr/ordering.api:latest
+          image: {{ .Values.registry }}/ordering.api:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: api-http

@@ -33,9 +33,11 @@ spec:
         app: eshop
         service: blazorclient
     spec:
+      imagePullSecrets:
+      - name: {{ .Values.imagepullsecret }}
       containers:
         - name: blazorclient
-          image: eshopdapr/blazor.client:latest
+          image: {{ .Values.registry }}/blazor.client:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: client-http
