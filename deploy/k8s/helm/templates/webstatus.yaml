@@ -88,9 +88,15 @@ metadata:
     app: eshop
     service: webstatus
   annotations:
+    cert-manager.io/issuer: "letsencrypt-staging"
+    acme.cert-manager.io/http01-edit-in-place: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
+  tls:
+  - hosts:
+    - {{ .Values.hostName }}
+    secretName: eshop-tls
   ingressClassName: nginx
   rules:
   - host: {{ .Values.hostName }}
@@ -115,9 +121,15 @@ metadata:
     app: eshop
     service: webstatus
   annotations:
+    cert-manager.io/issuer: "letsencrypt-staging"
+    acme.cert-manager.io/http01-edit-in-place: "true"
     nginx.ingress.kubernetes.io/permanent-redirect: "http://{{ .Values.hostName }}/status/"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  tls:
+  - hosts:
+    - {{ .Values.hostName }}
+    secretName: eshop-tls
   ingressClassName: nginx
   rules:
   - host: {{ .Values.hostName }}
