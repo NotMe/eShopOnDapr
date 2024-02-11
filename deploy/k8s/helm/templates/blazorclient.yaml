@@ -82,8 +82,6 @@ metadata:
     app: eshop
     service: blazorclient
   annotations:
-    cert-manager.io/issuer: "letsencrypt-staging"
-    acme.cert-manager.io/http01-edit-in-place: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
